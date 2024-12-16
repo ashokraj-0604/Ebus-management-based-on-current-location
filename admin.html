@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Dashboard</title>
+  <link rel="stylesheet" href="index.css">
+</head>
+<body>
+  <h1>Admin Dashboard</h1>
+  <button id="logoutButton">Logout</button>
+  <h2>Create Driver/Travel Login</h2>
+  <form id="createDriverForm">
+    <input type="text" id="driverName" placeholder="Driver/Travel Name" required />
+    <input type="email" id="driverEmail" placeholder="Email" required />
+    <input type="password" id="driverPassword" placeholder="Password" required />
+    <button type="submit">Create Login</button>
+  </form>
+  <h2>Driver/Travel List</h2>
+  <ul id="driverList"></ul>
+
+  <script src="https://www.gstatic.com/firebasejs/9.15.0/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.15.0/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.15.0/firebase-database.js"></script>
+  <script type="module" src ="app.js"></script>
+</body>
+</html>

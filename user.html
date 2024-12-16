@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>User Dashboard</title>
+  <link rel="stylesheet" href="index.css">
+</head>
+<body>
+  <h1>User Dashboard</h1>
+  <button id="logoutButton">Logout</button>
+
+  <h2>Search Bus</h2>
+  <form id="searchBusForm">
+    <input type="text" id="searchSource" placeholder="Enter Source" required />
+    <input type="text" id="searchDestination" placeholder="Enter Destination" required />
+    <button type="submit">Search</button>
+  </form>
+
+  <h2>Available Buses</h2>
+  <ul id="busResults"></ul>
+
+  <script src="https://www.gstatic.com/firebasejs/9.15.0/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.15.0/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.15.0/firebase-database.js"></script>
+
+  <script type="module" src="app.js"></script>
+</body>
+</html>
