@@ -1,29 +1,39 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>User Dashboard</title>
-  <link rel="stylesheet" href="index.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Dashboard - Search Buses</title>
+    <link rel="stylesheet" href="styles/user.css">
 </head>
 <body>
-  <h1>User Dashboard</h1>
-  <button id="logoutButton">Logout</button>
+    <div class="dashboard-container">
+      
+        <h1>Welcome to the Bus Search <button id="logout-btn" class="btn">Logout</button></h1>
+        
+        <!-- Search Form -->
+        <form id="bus-search-form">
+            <div class="form-group">
+                <label for="source">Source:</label>
+                <input type="text" id="source" name="source" placeholder="Enter source location" required>
+            </div>
+            <div class="form-group">
+                <label for="destination">Destination:</label>
+                <input type="text" id="destination" name="destination" placeholder="Enter destination location" required>
+            </div>
+            <button type="submit" class="btn">Search Buses</button>
+        </form>
 
-  <h2>Search Bus</h2>
-  <form id="searchBusForm">
-    <input type="text" id="searchSource" placeholder="Enter Source" required />
-    <input type="text" id="searchDestination" placeholder="Enter Destination" required />
-    <button type="submit">Search</button>
-  </form>
-
-  <h2>Available Buses</h2>
-  <ul id="busResults"></ul>
-
-  <script src="https://www.gstatic.com/firebasejs/9.15.0/firebase-app.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/9.15.0/firebase-auth.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/9.15.0/firebase-database.js"></script>
-
-  <script type="module" src="app.js"></script>
+        <!-- Search Results -->
+        <div id="bus-results" class="results-container">
+            <h2>Available Buses</h2>
+            <div id="bus-list"></div> <!-- This will hold the bus results -->
+        </div>
+    </div>
+    <script src="https://www.gstatic.com/firebasejs/10.11.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.11.0/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.11.0/firebase-firestore-compat.js"></script>
+    <script src="scripts/user.js"></script>
 </body>
 </html>
+

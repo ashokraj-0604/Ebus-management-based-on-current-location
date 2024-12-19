@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login & Register</title>
+    <link rel="stylesheet" href="styles/userlogin.css">
+</head>
+<body>
+    <div class="form-container">
+        <div class="toggle-container">
+            <button id="login-toggle" class="active">Login</button>
+            <button id="register-toggle">Register</button>
+        </div>
+
+        <!-- Login Form -->
+        <form id="login-form" class="form">
+            <h2>Login to Ebus Management System</h2>
+            <div class="form-group">
+                <label for="login-email">Email:</label>
+                <input type="email" id="login-email" required>
+            </div>
+            <div class="form-group">
+                <label for="login-password">Password:</label>
+                <input type="password" id="login-password" required>
+            </div>
+            <button type="submit">Login</button>
+            <p id="login-error-message"></p>
+        </form>
+
+        <!-- Register Form -->
+        <form id="register-form" class="form hidden">
+            <h2>Register to Ebus <br>Management System</h2>
+            <div class="form-group">
+                <label for="register-firstName">First Name:</label>
+                <input type="text" id="register-firstName" required>
+            </div>
+            <div class="form-group">
+                <label for="register-lastName">Last Name:</label>
+                <input type="text" id="register-lastName" required>
+            </div>
+            <div class="form-group">
+                <label for="register-email">Email:</label>
+                <input type="email" id="register-email" required>
+            </div>
+            <div class="form-group">
+                <label for="register-password">Password:</label>
+                <input type="password" id="register-password" required>
+            </div>
+            <button type="submit">Register</button>
+            <p id="register-error-message"></p>
+        </form>
+    </div>
+    <script src="https://www.gstatic.com/firebasejs/10.11.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.11.0/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.11.0/firebase-firestore-compat.js"></script>
+    <script src="scripts/app.js"></script>
+    <script src="scripts/userlogin.js"></script>
+</body>
+</html>

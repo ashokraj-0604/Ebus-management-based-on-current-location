@@ -1,28 +1,90 @@
-<!DOCTYPE html>
+<!DOCTYPE html> 
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Driver Dashboard</title>
-  <link rel="stylesheet" href="index.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Driver/Travel Dashboard</title>
+    <link rel="stylesheet" href="styles/driver.css">
 </head>
 <body>
-  <h1>Driver Dashboard</h1>
-  <button id="logoutButton">Logout</button>
-  <h2>Post Bus Information</h2>
-  <form id="postBusForm">
-    <input type="text" id="busType" placeholder="Bus Type (e.g., AC, Sleeper)" required />
-    <input type="text" id="source" placeholder="Source" required />
-    <input type="text" id="destination" placeholder="Destination" required />
-    <input type="text" id="contact" placeholder="Contact Number" required />
-    <button type="submit">Post Bus</button>
-  </form>
-  <h2>My Buses</h2>
-  <ul id="busList"></ul>
+    <div class="dashboard-container">
+        <h1>Welcome, Driver/Travel!</h1>
+        <p>Use this form to post your bus's information.</p>
 
-  <script src="https://www.gstatic.com/firebasejs/9.15.0/firebase-app.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/9.15.0/firebase-auth.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/9.15.0/firebase-database.js"></script>
-  <script type="module" src="app.js"></script>
+        <form id="bus-form">
+            <!-- Bus Name -->
+            <div class="form-group">
+                <label for="busName">Bus Name</label>
+                <input type="text" id="busName" name="busName" placeholder="Enter your bus name" required>
+            </div>
+
+            <!-- Bus Type -->
+            <div class="form-group">
+                <label for="busType">Bus Type</label>
+                <select id="busType" name="busType" required>
+                    <option value="" disabled selected>Select Bus Type</option>
+                    <option value="Luxury">Luxury</option>
+                    <option value="Semi-Luxury">Semi-Luxury</option>
+                    <option value="Standard">Standard</option>
+                    <option value="Mini-Bus">Mini-Bus</option>
+                </select>
+            </div>
+
+            <!-- Bus Details -->
+            <div class="form-group">
+                <label for="busDetails">Bus Details</label>
+                <textarea id="busDetails" name="busDetails" placeholder="Enter additional details about the bus" rows="4" required></textarea>
+            </div>
+
+            <!-- Contact Number -->
+            <div class="form-group">
+                <label for="contactNumber">Contact Number</label>
+                <input type="tel" id="contactNumber" name="contactNumber" placeholder="Enter your contact number" required>
+            </div>
+
+            <!-- Source -->
+            <div class="form-group">
+                <label for="source">Source</label>
+                <input type="text" id="source" name="source" placeholder="Enter starting point (source)" required>
+            </div>
+
+            <!-- Destination -->
+            <div class="form-group">
+                <label for="destination">Destination</label>
+                <input type="text" id="destination" name="destination" placeholder="Enter destination point" required>
+            </div>
+
+            <!-- Stops -->
+            <div class="form-group">
+                <label for="stops">Intermediate Stops</label>
+                <textarea id="stops" name="stops" placeholder="Enter stops (stop name, arrival time, departure time)" rows="4" required></textarea>
+            </div>
+
+            <!-- Fare -->
+            <div class="form-group">
+                <label for="fare">Fare (per stop and per person)</label>
+                <input type="number" id="fare" name="fare" placeholder="Enter fare in currency" required>
+            </div>
+
+            <!-- Driver Name -->
+            <div class="form-group">
+                <label for="driverName">Driver Name</label>
+                <input type="text" id="driverName" name="driverName" placeholder="Enter driver's name" required>
+            </div>
+            
+            <!-- Submit Button -->
+            <button type="submit" class="btn">Submit</button>
+        </form>
+
+        <!-- Success Message -->
+        <div id="success-message" style="display: none;">
+            <p>Bus information has been successfully posted!</p>
+        </div>
+    </div>
+
+    <script src="https://www.gstatic.com/firebasejs/10.11.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.11.0/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.11.0/firebase-firestore-compat.js"></script>
+    <script src="scripts/driver.js"></script>
 </body>
 </html>

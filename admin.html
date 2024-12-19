@@ -1,27 +1,93 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Admin Dashboard</title>
-  <link rel="stylesheet" href="index.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard</title>
+    <link rel="stylesheet" href="styles/admin.css">
+    <!-- Firebase SDK -->
+    <script src="https://www.gstatic.com/firebasejs/10.11.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.11.0/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.11.0/firebase-firestore-compat.js"></script>
 </head>
 <body>
-  <h1>Admin Dashboard</h1>
-  <button id="logoutButton">Logout</button>
-  <h2>Create Driver/Travel Login</h2>
-  <form id="createDriverForm">
-    <input type="text" id="driverName" placeholder="Driver/Travel Name" required />
-    <input type="email" id="driverEmail" placeholder="Email" required />
-    <input type="password" id="driverPassword" placeholder="Password" required />
-    <button type="submit">Create Login</button>
-  </form>
-  <h2>Driver/Travel List</h2>
-  <ul id="driverList"></ul>
+    <div class="container">
+        <h1>Admin for Ebus Management System</h1>
+        <h3>Create Driver/Travel Accounts</h3>
+        <form id="create-user-form">
+            <div class="form-group">
+                <label for="email">User Email</label>
+                <input type="email" placeholder="eg.user_name@gmail.com" id="email" required>
+            </div>
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" id="password" required>
+            </div>
+            <div class="form-group">
+                <label for="role">Role</label>
+                <select id="role" required>
+                    <option value="" disabled selected>Select</option>
+                    <option value="driver">Driver</option>
+                    <option value="travel">Travel Staff</option>
+                </select>
+            </div>
+            <button type="submit">Create Account</button>
+        </form>
+        <p id="status-message"></p>
+    </div>
 
-  <script src="https://www.gstatic.com/firebasejs/9.15.0/firebase-app.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/9.15.0/firebase-auth.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/9.15.0/firebase-database.js"></script>
-  <script type="module" src ="app.js"></script>
+    <script>
+        // Firebase Configuration
+        const firebaseConfig = {
+  apiKey: "AIzaSyAbYTSTs-wth8_qVGvjgThIG-__Ek69NtE",
+  authDomain: "ebus-management-9a2ba.firebaseapp.com",
+  projectId: "ebus-management-9a2ba",
+  storageBucket: "ebus-management-9a2ba.firebasestorage.app",
+  messagingSenderId: "1080724320675",
+  appId: "1:1080724320675:web:50f4dd697e19a15174aa16",
+  measurementId: "G-BWXE2GPSL9"
+};
+
+
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+        const auth = firebase.auth();
+        const db = firebase.firestore();
+
+        // Reference to form elements
+        const form = document.getElementById('create-user-form');
+        const statusMessage = document.getElementById('status-message');
+
+        form.addEventListener('submit', async (e) => {
+            e.preventDefault();
+
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+            const role = document.getElementById('role').value;
+
+            try {
+                // Create user account using Firebase Admin SDK (Admin privilege needed)
+                const createUser = firebase.auth().createUserWithEmailAndPassword(email, password)
+                    .then((userCredential) => {
+                        const userId = userCredential.user.uid;
+
+                        // Store user role in Firestore
+                        return db.collection('users').doc(userId).set({
+                            email: email,
+                            role: role
+                        });
+                    })
+                    .then(() => {
+                        statusMessage.textContent = `Account created successfully with role: ${role}`;
+                        form.reset();
+                    })
+                    .catch((error) => {
+                        statusMessage.textContent = `Error: ${error.message}`;
+                    });
+            } catch (error) {
+                statusMessage.textContent = `Error: ${error.message}`;
+            }
+        });
+    </script>
 </body>
 </html>

@@ -1,0 +1,97 @@
+body {
+    font-family: 'Open Sans', sans-serif;
+    background: linear-gradient(135deg, #f8f9fa, #e9ecef); /* Light pastel gradient */
+    margin: 0;
+    padding: 0;
+    color: #495057;
+}
+
+/* Dashboard Container */
+.dashboard-container {
+    max-width: 600px;
+    margin: 50px auto;
+    background: #ffffff;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+h1 {
+    font-size: 26px;
+    margin-bottom: 15px;
+    color: #495057;
+    font-weight: bold;
+    border-bottom: 2px solid #ced4da;
+    padding-bottom: 10px;
+}
+
+p {
+    font-size: 16px;
+    color: #6c757d;
+    margin-bottom: 20px;
+}
+
+/* Form Styling */
+.form-group {
+    margin-bottom: 15px;
+}
+
+label {
+    font-weight: 600;
+    font-size: 14px;
+    color: #6c757d;
+    display: block;
+    margin-bottom: 5px;
+}
+
+input, select, textarea {
+    width: 100%;
+    padding: 12px;
+    font-size: 16px;
+    border: 2px solid #ced4da;
+    border-radius: 8px;
+    background-color: #f8f9fa;
+    transition: border-color 0.3s ease, background-color 0.3s ease;
+}
+
+textarea {
+    resize: none;
+}
+
+input:focus, select:focus, textarea:focus {
+    border-color: #6c63ff; /* Purple */
+    outline: none;
+    box-shadow: 0 0 5px rgba(108, 99, 255, 0.3);
+}
+
+/* Button Styling */
+button {
+    width: 100%;
+    padding: 12px;
+    font-size: 16px;
+    font-weight: bold;
+    border: none;
+    border-radius: 8px;
+    background-color: #6c63ff; /* Purple */
+    color: #ffffff;
+    cursor: pointer;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+button:hover {
+    background-color: #574bce; /* Darker Purple */
+    box-shadow: 0 4px 10px rgba(108, 99, 255, 0.3);
+}
+
+/* Success Message */
+#success-message {
+    margin-top: 20px;
+    font-size: 14px;
+    font-weight: bold;
+    color: #28a745; /* Green */
+    background-color: #d4edda;
+    padding: 12px;
+    border-left: 5px solid #28a745;
+    border-radius: 8px;
+}
