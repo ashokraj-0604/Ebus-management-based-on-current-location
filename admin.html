@@ -5,14 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin Dashboard</title>
     <link rel="stylesheet" href="styles/admin.css">
-    <!-- Firebase SDK -->
-    <script src="https://www.gstatic.com/firebasejs/10.11.0/firebase-app-compat.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/10.11.0/firebase-auth-compat.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/10.11.0/firebase-firestore-compat.js"></script>
 </head>
 <body>
     <div class="container">
-        <h1>Admin for Ebus Management System</h1>
+        <h1>Ebus Manager's Admin</h1>
         <h3>Create Driver/Travel Accounts</h3>
         <form id="create-user-form">
             <div class="form-group">
@@ -35,59 +31,10 @@
         </form>
         <p id="status-message"></p>
     </div>
-
-    <script>
-        // Firebase Configuration
-        const firebaseConfig = {
-  apiKey: "AIzaSyAbYTSTs-wth8_qVGvjgThIG-__Ek69NtE",
-  authDomain: "ebus-management-9a2ba.firebaseapp.com",
-  projectId: "ebus-management-9a2ba",
-  storageBucket: "ebus-management-9a2ba.firebasestorage.app",
-  messagingSenderId: "1080724320675",
-  appId: "1:1080724320675:web:50f4dd697e19a15174aa16",
-  measurementId: "G-BWXE2GPSL9"
-};
-
-
-        // Initialize Firebase
-        firebase.initializeApp(firebaseConfig);
-        const auth = firebase.auth();
-        const db = firebase.firestore();
-
-        // Reference to form elements
-        const form = document.getElementById('create-user-form');
-        const statusMessage = document.getElementById('status-message');
-
-        form.addEventListener('submit', async (e) => {
-            e.preventDefault();
-
-            const email = document.getElementById('email').value;
-            const password = document.getElementById('password').value;
-            const role = document.getElementById('role').value;
-
-            try {
-                // Create user account using Firebase Admin SDK (Admin privilege needed)
-                const createUser = firebase.auth().createUserWithEmailAndPassword(email, password)
-                    .then((userCredential) => {
-                        const userId = userCredential.user.uid;
-
-                        // Store user role in Firestore
-                        return db.collection('users').doc(userId).set({
-                            email: email,
-                            role: role
-                        });
-                    })
-                    .then(() => {
-                        statusMessage.textContent = `Account created successfully with role: ${role}`;
-                        form.reset();
-                    })
-                    .catch((error) => {
-                        statusMessage.textContent = `Error: ${error.message}`;
-                    });
-            } catch (error) {
-                statusMessage.textContent = `Error: ${error.message}`;
-            }
-        });
-    </script>
+    <script src="https://www.gstatic.com/firebasejs/10.11.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.11.0/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.11.0/firebase-firestore-compat.js"></script>
+    <script src="scripts/app.js"></script>
+    <script src="scripts/admin.js"></script>
 </body>
 </html>

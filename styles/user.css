@@ -18,6 +18,18 @@ body {
     animation: fadeIn 0.5s ease-in-out;
 }
 
+.dashboard-container h1 {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 24px;
+    color: #495057;
+    margin-bottom: 20px;
+    border-bottom: 2px solid #ced4da;
+    padding-bottom: 10px;
+}
+
+
 /* Form Styles */
 .form-group {
     margin-bottom: 20px;
@@ -49,7 +61,7 @@ form input:focus {
 /* Button Styles */
 button {
     padding: 12px 20px;
-    background: #6c63ff; /* Purple */
+    background: #6c63ff;
     color: white;
     font-size: 16px;
     font-weight: bold;
@@ -69,7 +81,7 @@ button:hover {
 /* Logout Button */
 #logout-btn {
     float: right;
-    background: #dc3545; /* Red */
+    background: #dc3545; 
     color: white;
     border: none;
     padding: 10px 15px;
@@ -145,15 +157,4 @@ button:hover {
     margin-top: 15px;
     display: none;
     animation: fadeIn 0.3s ease-in-out;
-}
-/* Header Alignment */
-.dashboard-container h1 {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    font-size: 24px;
-    color: #495057;
-    margin-bottom: 20px;
-    border-bottom: 2px solid #ced4da;
-    padding-bottom: 10px;
 }
