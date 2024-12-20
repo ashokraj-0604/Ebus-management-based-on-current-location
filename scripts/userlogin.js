@@ -12,6 +12,7 @@ loginToggle.addEventListener('click', () => {
     registerForm.classList.add('hidden');
     loginToggle.classList.add('active');
     registerToggle.classList.remove('active');
+    console.log('Switched to login form');
 });
 
 registerToggle.addEventListener('click', () => {
@@ -19,6 +20,7 @@ registerToggle.addEventListener('click', () => {
     loginForm.classList.add('hidden');
     registerToggle.classList.add('active');
     loginToggle.classList.remove('active');
+    console.log('Switched to register form');
 });
 
 // Login Form Submission
@@ -27,13 +29,15 @@ loginForm.addEventListener('submit', (e) => {
 
     const email = document.getElementById('login-email').value;
     const password = document.getElementById('login-password').value;
+    console.log(`Attempting to log in with email: ${email}`);
 
     auth.signInWithEmailAndPassword(email, password)
         .then((userCredential) => {
-            // Login successful
+            console.log('Login successful:', userCredential.user);
             window.location.href = "user.html"; // Redirect to bus search page
         })
         .catch((error) => {
+            console.error('Login error:', error.message);
             loginErrorMessage.textContent = error.message;
         });
 });
@@ -46,6 +50,7 @@ registerForm.addEventListener('submit', (e) => {
     const lastName = document.getElementById('register-lastName').value;
     const email = document.getElementById('register-email').value;
     const password = document.getElementById('register-password').value;
+    console.log(`Attempting to register with email: ${email}`);
 
     auth.createUserWithEmailAndPassword(email, password)
         .then((userCredential) => {
@@ -59,12 +64,13 @@ registerForm.addEventListener('submit', (e) => {
             });
         })
         .then(() => {
-            // Registration successful
+            console.log('Registration successful');
             alert('Registration successful! You can now log in.');
             registerForm.reset();
             registerToggle.click(); // Switch to Login form
         })
         .catch((error) => {
+            console.error('Registration error:', error.message);
             registerErrorMessage.textContent = error.message;
         });
 });
