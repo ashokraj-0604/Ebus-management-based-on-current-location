@@ -40,5 +40,5 @@ The **E-Bus Management System** is a web-based application designed to streamlin
 
 ### Step 1: Clone the Repository
 ```bash
-git clone https://github.com/your-username/ebus-management-system.git
-cd ebus-management-system
+git clone https://github.com//ashokraj-0604/Ebus-management-based-on-current-location.git
+cd Ebus-management-based-on-current-location
