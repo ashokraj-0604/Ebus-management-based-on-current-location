@@ -45,7 +45,6 @@ loginForm.addEventListener('submit', (e) => {
 // Register Form Submission
 registerForm.addEventListener('submit', (e) => {
     e.preventDefault();
-
     const firstName = document.getElementById('register-firstName').value;
     const lastName = document.getElementById('register-lastName').value;
     const email = document.getElementById('register-email').value;

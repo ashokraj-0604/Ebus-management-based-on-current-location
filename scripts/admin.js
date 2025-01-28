@@ -11,7 +11,6 @@ form.addEventListener('submit', async (e) => {
     const role = document.getElementById('role').value.trim();
 
     console.log("Attempting to create a new user account."); // Log action
-
     try {
         // Create a new user in Firebase Authentication
         const userCredential = await firebase.auth().createUserWithEmailAndPassword(email, password);

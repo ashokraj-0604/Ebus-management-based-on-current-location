@@ -30,7 +30,6 @@ busForm.addEventListener('submit', (e) => {
         console.error("Form submission failed: No logged-in user detected");
         return;
     }
-
     console.log("Logged-in user UID:", user.uid); 
 
     // Save bus information to Firestore
